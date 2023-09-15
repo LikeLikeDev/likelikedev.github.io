@@ -86,6 +86,26 @@
             color: #fff;
             text-decoration: none;
         }
+        .cookies-popup {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .cookies-accept {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -96,22 +116,55 @@
     </nav>
 </header>
 <main>
+    <div class="cookies-popup" id="cookiesPopup">
+        <p>By using this site you agree to our site <a href="/eula.html">EULA</a>.</p>
+        <button class="cookies-accept" id="acceptCookies">Accept and Continue</button>
+    </div>
     <h1>Why Invest - LikeLike</h1>
     <a href="invest.html"><button id="investMainButton">INVEST NOW</button></a>
     <section id="whatIs">
         <h2>What is LikeLike?</h2>
-        <p>LikeLike is the next Social Media sensation. The main feature of LikeLike is...</p>
+        <p>LikeLike is the next Social Media sensation. The main feature of LikeLike is the Freinds feature, where </p>
     </section>
     <section id="whyInvest">
         <h2>Why Invest?</h2>
+        <p>As with every app, </p>
     </section>
     <section id="investSecurity">
         <h2>Investment Security</h2>
+        <p>When Investing with LikeLike, we can <strong>GARUNTEE</strong> maximum money garuntee</p>
     </section>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </main>
 <footer>
     <p><a href="#">Back to Top</a> • <a href="invest.html">Invest</a> • © LikeLike 2023</p>
 </footer>
+<script>
+    // Function to show the cookies popup
+    function showCookiesPopup() {
+        const cookiesPopup = document.getElementById('cookiesPopup');
+        cookiesPopup.style.display = 'block';
+    }
+
+    // Function to hide the cookies popup
+    function hideCookiesPopup() {
+        const cookiesPopup = document.getElementById('cookiesPopup');
+        cookiesPopup.style.display = 'none';
+    }
+
+    // Check if the user has previously accepted cookies
+    const hasAcceptedCookies = localStorage.getItem('acceptedCookies');
+
+    if (!hasAcceptedCookies) {
+        showCookiesPopup();
+    }
+
+    // Event listener for the "Accept" button
+    const acceptCookiesButton = document.getElementById('acceptCookies');
+    acceptCookiesButton.addEventListener('click', function() {
+        localStorage.setItem('acceptedCookies', 'true');
+        hideCookiesPopup();
+    });
+</script>
 </body>
 </html>
